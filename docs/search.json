@@ -1,105 +1,105 @@
 [
   {
-    "objectID": "Index.html",
-    "href": "Index.html",
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "",
     "text": "In this lesson we will begin learning how to explore a dataset using R.\nThe dataset we will use contains information about student performance in an Anatomy course. Each row in the dataset represents one student. The dataset includes several variables such as:\n\nPrior GPA\nFinal exam score\nNPTE score\nOverall course score\nCourse pathway (Residential or Hybrid)"
   },
   {
-    "objectID": "Index.html#introduction",
-    "href": "Index.html#introduction",
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "",
     "text": "In this lesson we will begin learning how to explore a dataset using R.\nThe dataset we will use contains information about student performance in an Anatomy course. Each row in the dataset represents one student. The dataset includes several variables such as:\n\nPrior GPA\nFinal exam score\nNPTE score\nOverall course score\nCourse pathway (Residential or Hybrid)"
   },
   {
-    "objectID": "Index.html#before-we-can-analyze-the-data-we-first-need-to-load-the-dataset-into-r.",
-    "href": "Index.html#before-we-can-analyze-the-data-we-first-need-to-load-the-dataset-into-r.",
+    "objectID": "index.html#before-we-can-analyze-the-data-we-first-need-to-load-the-dataset-into-r.",
+    "href": "index.html#before-we-can-analyze-the-data-we-first-need-to-load-the-dataset-into-r.",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Before we can analyze the data, we first need to load the dataset into R.",
     "text": "Before we can analyze the data, we first need to load the dataset into R."
   },
   {
-    "objectID": "Index.html#load-the-anatomy-exam-dataset",
-    "href": "Index.html#load-the-anatomy-exam-dataset",
+    "objectID": "index.html#load-the-anatomy-exam-dataset",
+    "href": "index.html#load-the-anatomy-exam-dataset",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Load the Anatomy exam dataset",
     "text": "Load the Anatomy exam dataset\nNext we load the dataset into R using the read_excel() function.\nThe dataset is saved as an Excel file named Anatomy_Exam_Data.xlsx.\nread_excel(\"Anatomy_Exam_Data.xlsx\")\nIn this code:\n\nread_excel() tells R to open an Excel file\n\"Anatomy_Exam_Data.xlsx\" is the file name\nexam_data is the name we are giving the dataset inside R\n\nNow the dataset is stored in an object called exam_data."
   },
   {
-    "objectID": "Index.html#view-the-variable-names",
-    "href": "Index.html#view-the-variable-names",
+    "objectID": "index.html#view-the-variable-names",
+    "href": "index.html#view-the-variable-names",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "View the variable names",
     "text": "View the variable names\nBefore analyzing the dataset, it is helpful to see the names of the variables it contains.\nWe can use the names() function to list the variable names.\nnames(exam_data)\nThis function returns the column names in the dataset. Each column represents a variable that we can analyze later.\nExamples of variables in this dataset include:\n\npathway\nprior_gpa\nfinal_exam_score\nnpte_score\noverall_score"
   },
   {
-    "objectID": "Index.html#viewing-the-dataset",
-    "href": "Index.html#viewing-the-dataset",
+    "objectID": "index.html#viewing-the-dataset",
+    "href": "index.html#viewing-the-dataset",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Viewing the dataset",
     "text": "Viewing the dataset\nNow that the dataset has been loaded, we can begin exploring it.\n\nOne of the first things we usually want to do is look at the data itself"
   },
   {
-    "objectID": "Index.html#display-the-first-few-rows",
-    "href": "Index.html#display-the-first-few-rows",
+    "objectID": "index.html#display-the-first-few-rows",
+    "href": "index.html#display-the-first-few-rows",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Display the first few rows",
     "text": "Display the first few rows\nThe `head()` function shows the first several rows of the dataset.\nhead(exam_data)\nThis allows us to quickly see:\n\nwhat the data looks like\nhow the variables are organized\nwhat type of values are stored in each column\nEach row represents one student, and each column represents a variable such as prior GPA, exam score, or pathway."
   },
   {
-    "objectID": "Index.html#open-the-full-dataset",
-    "href": "Index.html#open-the-full-dataset",
+    "objectID": "index.html#open-the-full-dataset",
+    "href": "index.html#open-the-full-dataset",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Open the full dataset",
     "text": "Open the full dataset\nSometimes it is helpful to view the entire dataset in a spreadsheet-style window.\nThe View() function opens the dataset in a new tab inside RStudio.\nView(exam_data)\nThis allows you to scroll through the data and examine the values more closely.\nNote that View() must begin with a capital V."
   },
   {
-    "objectID": "Index.html#calculating-basic-descriptive-statistics",
-    "href": "Index.html#calculating-basic-descriptive-statistics",
+    "objectID": "index.html#calculating-basic-descriptive-statistics",
+    "href": "index.html#calculating-basic-descriptive-statistics",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Calculating basic descriptive statistics",
     "text": "Calculating basic descriptive statistics\nOnce we understand the structure of the dataset, we can begin calculating **descriptive statistics**.\n\nDescriptive statistics summarize the main features of a dataset. Common examples include:\n- the number of observations\n- the average value of a variable\n- the spread of values in a variable"
   },
   {
-    "objectID": "Index.html#number-of-students-in-the-dataset",
-    "href": "Index.html#number-of-students-in-the-dataset",
+    "objectID": "index.html#number-of-students-in-the-dataset",
+    "href": "index.html#number-of-students-in-the-dataset",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Number of students in the dataset",
     "text": "Number of students in the dataset\nSince each row represents one student, we can count the number of students using the `nrow()` function.\nnrow(exam_data)\nThis tells us how many students are included in the Anatomy course dataset.\n\nAverage prior GPA\nThe mean() function calculates the average value of a variable.\nHere we calculate the mean prior GPA.\nmean(exam_data$prior_gpa)\nIn this code:\n\nexam_data is the dataset\n$prior_gpa tells R to use the prior GPA column\n\n\n\nAverage final exam score\nWe can calculate the average final exam score in the same way.\nmean(exam_data$final_exam_score)\n\n\nStandard deviation of final exam scores\nThe standard deviation describes how spread out the values are around the average.\nsd(exam_data$final_exam_score)\nLarger values indicate that scores vary more widely among students.\n\n\nMinimum and maximum scores\nWe can also look at the lowest and highest values in a variable.\nmin(exam_data$final_exam_score)\nmax(exam_data$final_exam_score)\nThese functions help us quickly understand the range of scores in the course."
   },
   {
-    "objectID": "Index.html#common-r-functions-for-descriptive-statistics",
-    "href": "Index.html#common-r-functions-for-descriptive-statistics",
+    "objectID": "index.html#common-r-functions-for-descriptive-statistics",
+    "href": "index.html#common-r-functions-for-descriptive-statistics",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Common R functions for descriptive statistics",
     "text": "Common R functions for descriptive statistics\nThe table below summarizes several basic R functions that are commonly used when exploring a dataset.\n\n\n\n\n\n\n\n\nFunction\nWhat it does\nExample\n\n\n\n\nnrow()\nCounts the number of rows (observations) in a dataset\nnrow(exam_data)\n\n\nncol()\nCounts the number of variables (columns)\nncol(exam_data)\n\n\nnames()\nDisplays the variable names in a dataset\nnames(exam_data)\n\n\nmean()\nCalculates the average value of a numeric variable\nmean(exam_data$prior_gpa)\n\n\nmedian()\nCalculates the middle value of a numeric variable\nmedian(exam_data$prior_gpa)\n\n\nsd()\nCalculates the standard deviation\nsd(exam_data$final_exam_score)\n\n\nmin()\nFinds the smallest value in a variable\nmin(exam_data$final_exam_score)\n\n\nmax()\nFinds the largest value in a variable\nmax(exam_data$final_exam_score)\n\n\nsummary()\nProvides several descriptive statistics at once\nsummary(exam_data)\n\n\nhead()\nDisplays the first several rows of the dataset\nhead(exam_data)\n\n\n\nThese functions are commonly used as a first step in understanding a dataset before performing more advanced analysis."
   },
   {
-    "objectID": "Index.html#creating-a-basic-summary-table",
-    "href": "Index.html#creating-a-basic-summary-table",
+    "objectID": "index.html#creating-a-basic-summary-table",
+    "href": "index.html#creating-a-basic-summary-table",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Creating a basic summary table",
     "text": "Creating a basic summary table\nAnother common task when exploring data is creating a summary table.\nA summary table allows us to display several descriptive statistics together.\nFor example, we may want to see:\n\nthe number of students\nthe average prior GPA\nthe average final exam score\nthe average NPTE score\n\nTo create a summary table, we will use functions from the dplyr package.\nFirst, we load the package.\nlibrary(dplyr)\nNext we create a summary table using the summarise() function.\nsummary_table &lt;- exam_data %&gt;%\n  summarise(\n    n_students = n(),\n    mean_prior_gpa = mean(prior_gpa),\n    mean_final_exam = mean(final_exam_score),\n    mean_npte_score = mean(npte_score),\n    mean_overall_score = mean(overall_score)\n  )\n\nsummary_table\n\nUnderstanding the code\nThis code uses several important elements:\n\nexam_data is the dataset we are analyzing\n%&gt;% passes the dataset into the next step\nsummarise() calculates summary statistics\nn() counts the number of observations\n\nThe result is a summary table that displays several statistics for the dataset at once."
   },
   {
-    "objectID": "Index.html#creating-a-summary-table-by-pathway",
-    "href": "Index.html#creating-a-summary-table-by-pathway",
+    "objectID": "index.html#creating-a-summary-table-by-pathway",
+    "href": "index.html#creating-a-summary-table-by-pathway",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Creating a summary table by pathway",
     "text": "Creating a summary table by pathway\nSo far we have calculated statistics for the entire dataset. However, we might also want to compare groups of students.\nIn this dataset, students completed the same Anatomy course but were enrolled in different pathways:\n\nResidential\nHybrid\n\nWe can create a summary table that compares these groups.\nTo do this, we use the group_by() function before summarise().\npathway_summary &lt;- exam_data %&gt;% group_by(pathway) %&gt;% summarise( n_students = n(), mean_prior_gpa = mean(prior_gpa), mean_final_exam = mean(final_exam_score), mean_npte_score = mean(npte_score), mean_overall_score = mean(overall_score) )\n\npathway_summary\n\nUnderstanding the code\nThis code works in two steps.\nFirst, group_by(pathway) tells R to separate the dataset into groups based on the pathway variable.\nThen, summarise() calculates the statistics for each group separately.\nThe result is a table that allows us to compare Residential and Hybrid students across several measures.\nThis type of table is very common when exploring differences between groups in a dataset."
   },
   {
-    "objectID": "Index.html#creating-a-simple-bar-chart",
-    "href": "Index.html#creating-a-simple-bar-chart",
+    "objectID": "index.html#creating-a-simple-bar-chart",
+    "href": "index.html#creating-a-simple-bar-chart",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Creating a simple bar chart",
     "text": "Creating a simple bar chart\nTables are useful for summarizing data, but visualizations can make patterns easier to see.\nIn this section, we will create a bar chart that displays the average overall score for each pathway.\nTo create the chart, we will use the ggplot2 package. This package is part of the tidyverse and is commonly used for creating data visualizations in R.\nlibrary(ggplot2)\nNow we can create the bar chart.\nggplot(pathway_summary, aes(x = pathway, y = mean_overall_score)) +\n  geom_col() +\n  labs(\n    title = \"Average Overall Score by Pathway\",\n    x = \"Pathway\",\n    y = \"Average Overall Score\"\n  )\n\nUnderstanding the code\nThis chart is created using several components:\n\nggplot() begins the process of building a chart\npathway_summary is the dataset used for the plot\naes() specifies the variables used in the chart\ngeom_col() creates a bar chart\nlabs() adds labels and a title\n\nIn this chart:\n\nthe x-axis shows the two pathways\nthe y-axis shows the average overall score\neach bar represents the average score for that group of students"
   },
   {
-    "objectID": "Index.html#summary",
-    "href": "Index.html#summary",
+    "objectID": "index.html#summary",
+    "href": "index.html#summary",
     "title": "Introduction to R: Working with Anatomy Exam Data",
     "section": "Summary",
     "text": "Summary\nIn this lesson, we introduced several basic tools for exploring a dataset in R. We began by loading an Excel file and examining the structure of the dataset. We then used functions such as names(), head(), and str() to understand the variables and observations in the data. Next, we calculated several descriptive statistics, including the number of students and the average values of key variables such as prior GPA and exam scores. Finally, we created a summary table comparing Residential and Hybrid students and visualized the results with a simple bar chart. These steps represent common first tasks when beginning to explore a new dataset."
