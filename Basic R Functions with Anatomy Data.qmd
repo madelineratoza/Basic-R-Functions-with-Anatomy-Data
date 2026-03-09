@@ -1,0 +1,322 @@
+---
+title: "Introduction to R: Working with Anatomy Exam Data"
+format: html
+toc: true
+theme: darkly
+execute:
+  echo: true
+---
+
+## Introduction
+
+In this lesson we will begin learning how to explore a dataset using R.
+
+The dataset we will use contains information about student performance in an Anatomy course. Each row in the dataset represents one student. The dataset includes several variables such as:
+
+-   Prior GPA
+-   Final exam score
+-   NPTE score
+-   Overall course score
+-   Course pathway (Residential or Hybrid)
+
+## Before we can analyze the data, we first need to **load the dataset into R**.
+
+## Load the Anatomy exam dataset
+
+Next we load the dataset into R using the `read_excel()` function.
+
+The dataset is saved as an Excel file named **Anatomy_Exam_Data.xlsx**.
+
+``` r
+read_excel("Anatomy_Exam_Data.xlsx")
+```
+
+In this code:
+
+-   `read_excel()` tells R to open an Excel file
+
+-   `"Anatomy_Exam_Data.xlsx"` is the file name
+
+-   `exam_data` is the name we are giving the dataset inside R
+
+Now the dataset is stored in an object called **exam_data**.
+
+------------------------------------------------------------------------
+
+## View the variable names
+
+Before analyzing the dataset, it is helpful to see the names of the variables it contains.
+
+We can use the `names()` function to list the variable names.
+
+``` r
+names(exam_data)
+```
+
+This function returns the column names in the dataset. Each column represents a variable that we can analyze later.
+
+Examples of variables in this dataset include:
+
+-   pathway
+
+-   prior_gpa
+
+-   final_exam_score
+
+-   npte_score
+
+-   overall_score
+
+## Viewing the dataset
+
+Now that the dataset has been loaded, we can begin exploring it.\
+\
+One of the first things we usually want to do is look at the data itself
+
+## Display the first few rows
+
+The \`head()\` function shows the first several rows of the dataset.
+
+``` R
+head(exam_data)
+```
+
+This allows us to quickly see:
+
+-   what the data looks like
+
+-   how the variables are organized
+
+-   what type of values are stored in each column
+
+-   Each **row** represents one student, and each **column** represents a variable such as prior GPA, exam score, or pathway.
+
+## Open the full dataset
+
+Sometimes it is helpful to view the entire dataset in a spreadsheet-style window.
+
+The `View()` function opens the dataset in a new tab inside RStudio.
+
+``` R
+View(exam_data)
+```
+
+This allows you to scroll through the data and examine the values more closely.
+
+Note that `View()` must begin with a capital **V**.
+
+## Calculating basic descriptive statistics
+
+Once we understand the structure of the dataset, we can begin calculating \*\*descriptive statistics\*\*.\
+\
+Descriptive statistics summarize the main features of a dataset. Common examples include:\
+- the number of observations\
+- the average value of a variable\
+- the spread of values in a variable
+
+## Number of students in the dataset
+
+Since each row represents one student, we can count the number of students using the \`nrow()\` function.
+
+``` R
+nrow(exam_data)
+```
+
+This tells us how many students are included in the Anatomy course dataset.
+
+### Average prior GPA
+
+The `mean()` function calculates the **average value** of a variable.
+
+Here we calculate the mean prior GPA.
+
+``` R
+mean(exam_data$prior_gpa)
+```
+
+In this code:
+
+-   `exam_data` is the dataset
+
+-   `$prior_gpa` tells R to use the **prior GPA column**
+
+### Average final exam score
+
+We can calculate the average final exam score in the same way.
+
+``` R
+mean(exam_data$final_exam_score)
+```
+
+### Standard deviation of final exam scores
+
+The **standard deviation** describes how spread out the values are around the average.
+
+``` R
+sd(exam_data$final_exam_score)
+```
+
+Larger values indicate that scores vary more widely among students.
+
+### Minimum and maximum scores
+
+We can also look at the lowest and highest values in a variable.
+
+```         
+min(exam_data$final_exam_score)
+```
+
+```         
+max(exam_data$final_exam_score)
+```
+
+These functions help us quickly understand the range of scores in the course.
+
+## Common R functions for descriptive statistics
+
+The table below summarizes several basic R functions that are commonly used when exploring a dataset.
+
+| Function | What it does | Example |
+|------------------------|------------------------|------------------------|
+| `nrow()` | Counts the number of rows (observations) in a dataset | `nrow(exam_data)` |
+| `ncol()` | Counts the number of variables (columns) | `ncol(exam_data)` |
+| `names()` | Displays the variable names in a dataset | `names(exam_data)` |
+| `mean()` | Calculates the average value of a numeric variable | `mean(exam_data$prior_gpa)` |
+| `median()` | Calculates the middle value of a numeric variable | `median(exam_data$prior_gpa)` |
+| `sd()` | Calculates the standard deviation | `sd(exam_data$final_exam_score)` |
+| `min()` | Finds the smallest value in a variable | `min(exam_data$final_exam_score)` |
+| `max()` | Finds the largest value in a variable | `max(exam_data$final_exam_score)` |
+| `summary()` | Provides several descriptive statistics at once | `summary(exam_data)` |
+| `head()` | Displays the first several rows of the dataset | `head(exam_data)` |
+
+These functions are commonly used as a **first step in understanding a dataset** before performing more advanced analysis.
+
+## Creating a basic summary table
+
+Another common task when exploring data is creating a **summary table**.
+
+A summary table allows us to display several descriptive statistics together.\
+For example, we may want to see:
+
+-   the number of students
+-   the average prior GPA
+-   the average final exam score
+-   the average NPTE score
+
+To create a summary table, we will use functions from the **dplyr** package.
+
+First, we load the package.
+
+``` R
+library(dplyr)
+```
+
+Next we create a summary table using the `summarise()` function.
+
+``` R
+summary_table <- exam_data %>%
+  summarise(
+    n_students = n(),
+    mean_prior_gpa = mean(prior_gpa),
+    mean_final_exam = mean(final_exam_score),
+    mean_npte_score = mean(npte_score),
+    mean_overall_score = mean(overall_score)
+  )
+
+summary_table
+```
+
+### Understanding the code
+
+This code uses several important elements:
+
+-   `exam_data` is the dataset we are analyzing
+
+-   `%>%` passes the dataset into the next step
+
+-   `summarise()` calculates summary statistics
+
+-   `n()` counts the number of observations
+
+The result is a **summary table** that displays several statistics for the dataset at once.
+
+## Creating a summary table by pathway
+
+So far we have calculated statistics for the **entire dataset**. However, we might also want to compare groups of students.
+
+In this dataset, students completed the same Anatomy course but were enrolled in different **pathways**:
+
+-   Residential
+-   Hybrid
+
+We can create a summary table that compares these groups.
+
+To do this, we use the `group_by()` function before `summarise()`.
+
+``` R
+pathway_summary <- exam_data %>% group_by(pathway) %>% summarise( n_students = n(), mean_prior_gpa = mean(prior_gpa), mean_final_exam = mean(final_exam_score), mean_npte_score = mean(npte_score), mean_overall_score = mean(overall_score) )
+
+pathway_summary
+```
+
+### Understanding the code
+
+This code works in two steps.
+
+First, `group_by(pathway)` tells R to separate the dataset into groups based on the **pathway variable**.
+
+Then, `summarise()` calculates the statistics for **each group separately**.
+
+The result is a table that allows us to compare Residential and Hybrid students across several measures.
+
+This type of table is very common when exploring differences between groups in a dataset.
+
+## Creating a simple bar chart
+
+Tables are useful for summarizing data, but visualizations can make patterns easier to see.
+
+In this section, we will create a **bar chart** that displays the **average overall score for each pathway**.
+
+To create the chart, we will use the `ggplot2` package. This package is part of the **tidyverse** and is commonly used for creating data visualizations in R.
+
+``` R
+library(ggplot2)
+```
+
+Now we can create the bar chart.
+
+``` R
+ggplot(pathway_summary, aes(x = pathway, y = mean_overall_score)) +
+  geom_col() +
+  labs(
+    title = "Average Overall Score by Pathway",
+    x = "Pathway",
+    y = "Average Overall Score"
+  )
+```
+
+### Understanding the code
+
+This chart is created using several components:
+
+-   `ggplot()` begins the process of building a chart
+
+-   `pathway_summary` is the dataset used for the plot
+
+-   `aes()` specifies the variables used in the chart
+
+-   `geom_col()` creates a bar chart
+
+-   `labs()` adds labels and a title
+
+In this chart:
+
+-   the **x-axis** shows the two pathways
+
+-   the **y-axis** shows the average overall score
+
+-   each bar represents the average score for that group of students
+
+## Summary
+
+In this lesson, we introduced several basic tools for exploring a dataset in R. We began by loading an Excel file and examining the structure of the dataset. We then used functions such as `names()`, `head()`, and `str()` to understand the variables and observations in the data. Next, we calculated several descriptive statistics, including the number of students and the average values of key variables such as prior GPA and exam scores. Finally, we created a summary table comparing Residential and Hybrid students and visualized the results with a simple bar chart. These steps represent common first tasks when beginning to explore a new dataset.

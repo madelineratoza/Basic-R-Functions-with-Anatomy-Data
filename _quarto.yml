@@ -1,0 +1,11 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Basic R Functions"
+
+format:
+  html:
+    theme: darkly
+    toc: true
